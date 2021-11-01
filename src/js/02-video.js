@@ -1,26 +1,97 @@
-const date = new Date();
-console.log("Date: ", date);
+import '../css/common.css'
+import BSN from "bootstrap.native";
 
-// Возвращает день месяца от 1 до 31
-console.log("getUTCDate(): ", date.getUTCDate());
+//  SetTimeout
+// ============================================//
+// function logMassage() {
+//     console.log("hello for message");
+// }
 
-// Возвращает день недели от 0 до 6
-console.log("getUTCDay(): ", date.getUTCDay());
+// const timeout = setTimeout(() =>{
+//     console.log("hello work")
+// }, 3000);
 
-// Возвращает месяц от 0 до 11
-console.log("getUTCMonth(): ", date.getUTCMonth());
 
-// Возвращает год из 4 цифр
-console.log("getUTCFullYear(): ", date.getUTCFullYear());
 
-// Возвращает час
-console.log("getUTCHours(): ", date.getUTCHours());
+// console.log("Hello");
 
-// Возвращает минуты
-console.log("getUTCMinutes(): ", date.getUTCMinutes());
+// console.log("Good night");
 
-// Возвращает секунды
-console.log("getUTCSeconds(): ", date.getUTCSeconds());
+// const shouldCancelTimer = Math.random()> 0.3;
 
-// Возвращает миллисекунды
-console.log("getUTCMilliseconds(): ", date.getUTCMilliseconds());
+// if(shouldCancelTimer){
+//     console.log(shouldCancelTimer);
+
+//     clearTimeout(timeout);
+// }
+// ============================================== //
+
+// SetInterval
+
+// console.log("hi");
+
+// console.log("goodbye");
+
+// const intervalId =  setInterval(() => {
+//     console.log("Nice");
+// }, 1000);
+
+// let number = 0;
+// const intervalId2 =  setInterval(() => {
+//     if(number === 3){
+//         clearInterval(intervalId2);
+//     }
+//     console.log("wow");
+//     number +=1;
+// }, 1000);
+// ==================================== //
+// let promptCounter = 0;
+// let hasSubscribed = false;
+
+// const intervalId = setInterval(() => {
+//     if(promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed){
+//         console.log("останавливаем интервал");
+//         clearInterval(intervalId);
+//         return;
+//     }
+//     console.log("подпишись на ссылку!!!", Date.now());
+//     promptCounter += 1;
+// }, PROMPT_DELAY);
+
+
+const PROMPT_DELAY = 1000;
+const MAX_PROMPT_ATTEMPTS = 3;
+let promptCounter = 0;
+let hasSubscribed = false;
+
+const refs = {
+    modal: document.querySelector('#subscription-modal'),
+    subscribeBtn: document.querySelector('button[data-subscribe]'),
+}
+
+openModal()
+
+refs.modal.addEventListener('hide.bs.modal', openModal)
+
+refs.subscribeBtn.addEventListener('click', () => {
+    hasSubscribed = true;
+    modal.hide()
+})
+
+const modal = new BSN.Modal('#subscription-modal');
+
+
+function openModal () {
+    if(promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed){
+        return;
+    }
+    setTimeout(() => {
+        modal.show()
+        
+    }, PROMPT_DELAY);
+    promptCounter += 1
+    
+}
+
+
+

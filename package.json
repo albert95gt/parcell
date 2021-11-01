@@ -26,6 +26,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "bootstrap.native": "^4.0.6",
     "simplelightbox": "^2.9.0"
   }
 }
